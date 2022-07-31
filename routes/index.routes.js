@@ -1,17 +1,17 @@
 const router = require("express").Router();
 const authRoutes = require("./auth.routes");
 const userRoutes = require("./user.routes");
-const campaignRoutes = require("./campaign.routes");
+const campaignRoutes = require("./campaigns.routes");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  res.json("All good in here");
+  res.json("Proyect 3");
 });
 
 router.use("/auth", authRoutes);
 
 router.use("/user", userRoutes);
 
-router.use("/campaign", campaignRoutes);
+router.use("/campaigns", campaignRoutes);
 
 module.exports = router;

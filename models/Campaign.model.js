@@ -15,9 +15,17 @@ const Campaign = new Schema(
     category: {
       type: String,
       required: true,
-      enum: ["animals", "cleaning", "forestry", "people"]
+      enum: ["animals", "beautify", "forestry", "people"]
     },
-    picture: String,
+    address: {
+      type: String,
+      required: true,
+    },
+    picture: {
+      type: String,
+      default:"https://i0.wp.com/wausaupilotandreview.com/wp-content/uploads/2021/01/volunteers-3874924_1920.png?fit=1200%2C848&ssl=1",
+    },
+    rating: String,
     achievement : Object,
     iceBreak: String,
     expiration: Date
