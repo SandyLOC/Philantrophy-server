@@ -78,7 +78,9 @@ router.post("/signup", isLoggedOut, (req, res) => {
           username,
           email: email,
           password: hashedPassword,
-          role: "user"
+          role: "user",
+          achievements: [],
+          favorites: []
         });
       })
       .then((user) => {
@@ -160,5 +162,7 @@ router.delete("/logout", isLoggedIn, (req, res) => {
       res.status(500).json({ errorMessage: err.message });
     });
 });
+
+
 
 module.exports = router;

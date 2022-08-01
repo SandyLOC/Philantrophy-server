@@ -2,12 +2,19 @@ const mongoose = require("mongoose");
 
 module.exports = (req, res, next) => {
 
-    const { campaignId } = req.params
+    const { campaignId, userId } = req.params
 
-    if (!mongoose.Types.ObjectId.isValid(campaignId)) {
-        res.status(400).json({ message: 'Specified id is not valid' });
-        return;
-      }
+    if(campaignId){
+        if (!mongoose.Types.ObjectId.isValid(campaignId)) {
+            res.status(400).json({ message: 'Specified id is not valid' });
+            return;
+        }
+    } else if (userId){
+        if(!mongoose.Types.ObjectId.isValid(userId)) {
+            res.status(400).json({ message: 'Specified id is not valid' });
+            return;
+        }
+    }
         next();
 
  };

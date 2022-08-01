@@ -16,13 +16,16 @@ const userSchema = new Schema(
       type: String,
       required: true
     },
-    picture: String,
+    picture: {
+      type: String,
+      default: "https://www.pngkit.com/png/full/281-2812821_user-account-management-logo-user-icon-png.png"
+    },
     role : {
       type: String,
       enum: ["user", "admin"]
     }, 
-    achievements: [Object],
-    favorites: [Object]
+    achievements: [String],
+    favorites: [{ type: Schema.Types.ObjectId, ref: 'Campaign' }]
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
