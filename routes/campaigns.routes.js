@@ -7,10 +7,9 @@ const isValid = require("../middleware/isValid");
 //POST - Create new campaign
 router.post('/new-campaign', (req, res, next) => {
   console.log(req.body)
-  const { name, location, category, address } = req.body
 
   //Store in database
-  Campaign.create({name, location, category, address})
+  Campaign.create(req.body)
   .then(newCampaign => {
     res.json(newCampaign)
   })
@@ -38,7 +37,7 @@ router.get('/:campaignId', isValid, (req,res, next) => {
 })
 
 //PUT - Updates a campaign by Id
-router.put('/:campaignId', isValid, (req,res, next) => {
+router.put('/edit/:campaignId', isValid, (req,res, next) => {
   const { campaignId } = req.params
 
   Campaign.findByIdAndUpdate(campaignId, req.body)
@@ -48,7 +47,7 @@ router.put('/:campaignId', isValid, (req,res, next) => {
 })
 
 //DELETE - Deletes a capaign by Id
-router.delete('/:campaignId', isValid, (req, res, next) => {
+router.delete('/delete/:campaignId', isValid, (req, res, next) => {
   const { campaignId } = req.params
 
   Campaign.findByIdAndRemove(campaignId)

@@ -35,7 +35,7 @@ router.get("/session", (req, res) => {
 });
 
 router.post("/signup", isLoggedOut, (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, role, picture } = req.body;
 
   if (!username) {
     return res
@@ -78,7 +78,8 @@ router.post("/signup", isLoggedOut, (req, res) => {
           username,
           email: email,
           password: hashedPassword,
-          role: "user",
+          role: role,
+          picture: picture,
           achievements: [],
           favorites: []
         });

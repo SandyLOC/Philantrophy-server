@@ -10,11 +10,13 @@ const userSchema = new Schema(
     },
     email: {
       type: String,
-      required: true
+      required: true,
+      unique: true
     },
     password: {
       type: String,
-      required: true
+      required: true,
+      minLength: 8
     },
     picture: {
       type: String,
@@ -22,6 +24,7 @@ const userSchema = new Schema(
     },
     role : {
       type: String,
+      default: "user",
       enum: ["user", "admin"]
     }, 
     achievements: [String],

@@ -25,6 +25,8 @@ const Campaign = new Schema(
       type: String,
       default:"https://i0.wp.com/wausaupilotandreview.com/wp-content/uploads/2021/01/volunteers-3874924_1920.png?fit=1200%2C848&ssl=1",
     },
+    date: Date,
+    description: String,
     rating: String,
     achievement : Object,
     iceBreak: String,
