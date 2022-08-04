@@ -27,7 +27,7 @@ const Campaign = new Schema(
     },
     date: Date,
     description: String,
-    rating: String,
+    ratings: [String],
     achievement : Object,
     iceBreak: String,
     expiration: Date

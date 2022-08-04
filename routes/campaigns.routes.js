@@ -56,4 +56,15 @@ router.delete('/delete/:campaignId', isValid, (req, res, next) => {
 
 })
 
+//PUT - Add rating to the campaign
+router.put('/rate/:campaignId&:rating', (req, res, next) => {
+    
+  const { campaignId, rating } = req.params
+  //const { userId } = req.user._id
+
+  Campaign.findByIdAndUpdate(campaignId, {$push: {ratings: rating }})
+  .then(result => res.json(result))
+  .catch(err => res.json(err))
+})
+
   module.exports = router
