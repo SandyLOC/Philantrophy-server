@@ -5,7 +5,7 @@ const campaignRoutes = require("./campaigns.routes");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  res.json("Proyect 3");
+  res.json("Philantrophy");
 });
 
 router.use("/auth", authRoutes);
