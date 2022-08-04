@@ -56,7 +56,17 @@ router.put('/favorite/:campaignId&:userId', (req, res, next) => {
     .then(result => res.json(result))
     .catch(err => res.json(err))
 })
+//PUT - Add favorites to the user
+router.put('/favoriteRemove/:campaignId&:userId', (req, res, next) => {
+    
+    const { campaignId, userId } = req.params
+    //const { userId } = req.user._id
+    console.log(userId)
 
-
+    User.findOneAndUpdate({ _id: userId }, { $pull: { favorites: campaignId  } },
+        { safe: true, multi: false })
+        .then(result => res.status(200).json(result))
+        .catch(err => res.json(err))
+})
 
 module.exports = router
