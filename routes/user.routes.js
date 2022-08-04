@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
 
-const isLoggedIn = require("../middleware/isLoggedIn");
+const logged = require("../middleware/logged");
 const isValid = require("../middleware/isValid");
 
 // Require the User model in order to interact with the database
@@ -46,14 +46,15 @@ router.delete('/profile/:userId', isValid, (req, res, next) => {
 })
 
 //PUT - Add favorites to the user
-router.put('/favorite/:campaignId', isLoggedIn, (req, res, next) => {
-    const { campaignId } = req.params
-    const { userId } = req.user._id
+router.put('/favorite/:campaignId&:userId', (req, res, next) => {
+    
+    const { campaignId, userId } = req.params
+    //const { userId } = req.user._id
     console.log(userId)
 
-    //User.findByIdAndUpdate(userId, {$push: {favorites: campaignId }})
-    //.then(result => res.json(result))
-    //.catch(err => res.json(err))
+    User.findByIdAndUpdate(userId, {$push: {favorites: campaignId }})
+    .then(result => res.json(result))
+    .catch(err => res.json(err))
 })
 
 
