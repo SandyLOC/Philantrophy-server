@@ -15,7 +15,7 @@ const Campaign = new Schema(
     category: {
       type: String,
       required: true,
-      enum: ["animals", "beautify", "forestry", "people"]
+      enum: ["Animals", "Beautify", "Forestry", "People"]
     },
     address: {
       type: String,
